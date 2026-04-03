@@ -3,218 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marbella 2026 | The Lifestyle Report</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Marbella 2026 | The Lifestyle & Wellness Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,700&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0a0a0a;
-            --text: #f5f5f5;
+            --bg: #050505;
+            --text: #f0f0f0;
             --accent: #c5a059;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
+            --subtle: #666;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
 
         body {
             background-color: var(--bg);
             color: var(--text);
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        /* --- Estética Vanguardista --- */
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); }
+
+        /* --- Layout --- */
         header {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 2rem;
             border-bottom: 1px solid var(--border);
+            text-align: center;
+            background: radial-gradient(circle at center, #111 0%, #050505 100%);
         }
 
-        h1 {
+        .hero-title {
             font-family: 'Bodoni Moda', serif;
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(3.5rem, 12vw, 9rem);
+            line-height: 0.85;
             text-transform: uppercase;
-            letter-spacing: -2px;
-            line-height: 0.9;
-            margin-bottom: 1rem;
+            letter-spacing: -4px;
+            margin-bottom: 2rem;
         }
 
-        .subtitle {
-            font-size: 0.9rem;
-            letter-spacing: 5px;
+        .hero-meta {
+            font-size: 0.7rem;
+            letter-spacing: 0.4rem;
+            text-transform: uppercase;
             color: var(--accent);
-            text-transform: uppercase;
         }
 
-        main { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+        main { max-width: 1400px; margin: 0 auto; padding: 5rem 2rem; }
 
-        section { margin-bottom: 8rem; }
+        section { margin-bottom: 12rem; }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .section-number {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-style: italic;
+        }
 
         h2 {
             font-family: 'Bodoni Moda', serif;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            border-left: 3px solid var(--accent);
-            padding-left: 1.5rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-transform: uppercase;
+            font-weight: 400;
         }
 
-        /* --- Grid de Contenido --- */
+        /* --- Grid & Cards --- */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
 
         .card {
-            background: var(--card-bg);
+            background: var(--glass);
             border: 1px solid var(--border);
-            padding: 2rem;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            padding: 2.5rem;
             text-decoration: none;
             color: inherit;
-            display: block;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             position: relative;
-            overflow: hidden;
         }
 
         .card:hover {
+            background: rgba(197, 160, 89, 0.05);
             border-color: var(--accent);
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.05);
+            transform: scale(1.02);
+            z-index: 10;
         }
 
         .card h3 {
             font-family: 'Bodoni Moda', serif;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
             color: var(--accent);
         }
 
         .card p {
             font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 1.5rem;
+            color: #aaa;
+            margin-bottom: 2rem;
+            font-weight: 200;
         }
 
-        /* --- Previsualización de Hipervínculos --- */
-        .link-preview {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--accent);
+            letter-spacing: 2px;
             color: var(--accent);
-            transition: 0.3s;
         }
 
-        .card:hover .link-preview {
-            background: var(--accent);
-            color: var(--bg);
+        .tag {
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.6rem;
         }
 
-        /* --- Footer Estilo Boutique --- */
+        /* --- Special Sections --- */
+        .legacy-block {
+            background: #111;
+            padding: 4rem;
+            border-left: 5px solid var(--accent);
+            margin-top: 2rem;
+        }
+
+        .legacy-block blockquote {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 2rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        /* --- Footer --- */
         footer {
-            padding: 4rem 2rem;
+            padding: 10rem 2rem 5rem;
             text-align: center;
             border-top: 1px solid var(--border);
+            opacity: 0.4;
             font-size: 0.8rem;
-            opacity: 0.5;
+            letter-spacing: 2px;
         }
 
-        /* Responsive para iPad */
+        /* iPad Optimizations */
         @media (max-width: 1024px) {
-            h1 { font-size: 4rem; }
             .grid { grid-template-columns: 1fr 1fr; }
         }
-
         @media (max-width: 768px) {
             .grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 4rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <p class="subtitle">Curated Experience</p>
-        <h1>Marbella<br>2026</h1>
-        <p style="margin-top: 2rem; max-width: 500px; opacity: 0.6;">The Lifestyle & Wellness Report: A journey through the soul of the Mediterranean's most exclusive sanctuary.</p>
+        <span class="hero-meta">Exclusive 2026 Edition</span>
+        <h1 class="hero-title">Marbella<br>Lifestyle</h1>
+        <p style="opacity: 0.5; max-width: 600px; font-weight: 200;">The ultimate digital compendium for the international resident. Curated by the vanguard of Mediterranean excellence.</p>
     </header>
 
     <main>
-        <section id="education">
-            <h2>01. Academic Excellence</h2>
+        
+        <section id="academic">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>Global Education</h2>
+            </div>
             <div class="grid">
                 <a href="https://www.instagram.com/alohacollege/" class="card" target="_blank">
-                    <h3>Aloha College</h3>
-                    <p>British style & IB pioneer in Nueva Andalucía. Global community since ages 3-18.</p>
-                    <span class="link-preview">View Instagram</span>
+                    <div>
+                        <span class="tag">British & IB</span>
+                        <h3>Aloha College</h3>
+                        <p>Pioneer in Nueva Andalucía. A truly global community for students aged 3–18.</p>
+                    </div>
+                    <div class="card-footer"><span>Explore Profile</span> <span>→</span></div>
                 </a>
                 <a href="https://www.instagram.com/swansinternationalschool/" class="card" target="_blank">
-                    <h3>Swans International</h3>
-                    <p>Elite academic standards with a 50-year heritage in Sierra Blanca.</p>
-                    <span class="link-preview">View Instagram</span>
+                    <div>
+                        <span class="tag">Elite Standard</span>
+                        <h3>Swans International</h3>
+                        <p>50-year heritage in Sierra Blanca. Excellence in academic results and social status.</p>
+                    </div>
+                    <div class="card-footer"><span>Explore Profile</span> <span>→</span></div>
                 </a>
                 <a href="https://www.instagram.com/bismarbella/" class="card" target="_blank">
-                    <h3>The British International</h3>
-                    <p>Modern facilities and personalized early years development.</p>
-                    <span class="link-preview">View Instagram</span>
+                    <div>
+                        <span class="tag">Modernity</span>
+                        <h3>British International</h3>
+                        <p>Cutting-edge facilities and personalized early years development in the heart of Marbella.</p>
+                    </div>
+                    <div class="card-footer"><span>Explore Profile</span> <span>→</span></div>
                 </a>
             </div>
         </section>
 
         <section id="wellness">
-            <h2>02. The Wellness Axis</h2>
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Health & Bio-hacking</h2>
+            </div>
             <div class="grid">
                 <a href="https://www.instagram.com/sixsensesspamarbella/" class="card" target="_blank">
-                    <h3>Six Senses Spa</h3>
-                    <p>Holistic healing & organic design at Puente Romano.</p>
-                    <span class="link-preview">View Experience</span>
+                    <div>
+                        <span class="tag">Puente Romano</span>
+                        <h3>Six Senses Spa</h3>
+                        <p>Holistic healing and organic architecture focused on longevity and recovery.</p>
+                    </div>
+                    <div class="card-footer"><span>Wellness Hub</span> <span>→</span></div>
                 </a>
                 <a href="https://www.instagram.com/buchingerwilhelmi/" class="card" target="_blank">
-                    <h3>Buchinger Wilhelmi</h3>
-                    <p>World-leading therapeutic fasting clinic for the global elite.</p>
-                    <span class="link-preview">View Experience</span>
+                    <div>
+                        <span class="tag">Therapeutic</span>
+                        <h3>Buchinger Wilhelmi</h3>
+                        <p>The world’s leading fasting clinic. Science-based detoxification and mental clarity.</p>
+                    </div>
+                    <div class="card-footer"><span>Wellness Hub</span> <span>→</span></div>
+                </a>
+            </div>
+        </section>
+
+        <section id="sports">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Rackets & Greens</h2>
+            </div>
+            <div class="grid">
+                <a href="https://www.instagram.com/puenteromanotennisclub/" class="card" target="_blank">
+                    <h3>Puente Romano Tennis</h3>
+                    <p>The training base for Novak Djokovic. The epicentre of social tennis in Europe.</p>
+                    <div class="card-footer"><span>Sports Club</span></div>
+                </a>
+                <a href="https://www.instagram.com/nuevaalcantaraclub/" class="card" target="_blank">
+                    <h3>Nueva Alcántara (NAC)</h3>
+                    <p>The 2026 gold standard for Padel. High-performance fitness meets luxury socializing.</p>
+                    <div class="card-footer"><span>Sports Club</span></div>
                 </a>
             </div>
         </section>
 
         <section id="gastronomy">
-            <h2>05. Gastronomy & Social</h2>
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Fine Dining</h2>
+            </div>
             <div class="grid">
                 <a href="https://www.instagram.com/restaurantskina/" class="card" target="_blank">
-                    <h3>Skina (**)</h3>
-                    <p>The pinnacle of Michelin-starred dining in the Old Town.</p>
-                    <span class="link-preview">Explore Menu</span>
+                    <h3>Skina **</h3>
+                    <p>Two Michelin stars. Contemporary Andalusian cuisine in the Old Town's narrow streets.</p>
+                    <div class="card-footer"><span>Gastronomy</span></div>
                 </a>
-                <a href="https://www.instagram.com/lacabanemarbella/" class="card" target="_blank">
-                    <h3>La Cabane</h3>
-                    <p>The iconic beach club redesigned by Dolce & Gabbana.</p>
-                    <span class="link-preview">Explore Lifestyle</span>
+                <a href="https://www.instagram.com/lenadanigarcia/" class="card" target="_blank">
+                    <h3>Leña Dani García</h3>
+                    <p>The most beautiful steakhouse in the world. Fire-focused culinary art.</p>
+                    <div class="card-footer"><span>Gastronomy</span></div>
+                </a>
+                <a href="https://www.instagram.com/notablumarbella/" class="card" target="_blank">
+                    <h3>Nota Blu</h3>
+                    <p>Sophisticated modern brasserie architecture. Where design meets the palate.</p>
+                    <div class="card-footer"><span>Gastronomy</span></div>
                 </a>
             </div>
         </section>
 
         <section id="legacy">
-            <h2>11. The Legacy</h2>
-            <div style="background: var(--card-bg); padding: 3rem; border: 1px solid var(--accent);">
-                <p style="font-family: 'Bodoni Moda'; font-size: 1.5rem; font-style: italic; color: var(--accent);">"Barefoot Luxury: The ability to dine on the beach with sand in your toes but with the world's finest champagne."</p>
-                <p style="margin-top: 1.5rem; opacity: 0.8;">In 1954, Prince Alfonso von Hohenlohe transformed Marbella forever. Today, that spirit lives on in the DNA of the Golden Mile.</p>
+            <div class="section-header">
+                <span class="section-number">11</span>
+                <h2>The Legacy</h2>
+            </div>
+            <div class="legacy-block">
+                <blockquote>"Marbella is not a place, it is a state of mind born from the vision of Prince Alfonso."</blockquote>
+                <p style="color: #888; line-height: 2;">Desde la llegada de los Hohenlohe en 1947, Marbella ha definido el concepto de <strong>"Barefoot Luxury"</strong>. Un refugio donde la aristocracia europea y los iconos de Hollywood como Sean Connery o Audrey Hepburn encontraron privacidad total bajo la sombra de La Concha.</p>
+                <div class="grid" style="margin-top: 3rem;">
+                    <a href="https://www.instagram.com/marbellaclubh/" class="card">
+                        <h3>Marbella Club Hotel</h3>
+                        <p>The soul of the coast. Where it all began in 1954.</p>
+                    </a>
+                </div>
             </div>
         </section>
+
     </main>
 
     <footer>
-        <p>MARBELLA 2026 | GENERATED FOR EXCELLENCE</p>
-        <p style="margin-top: 10px;">Built for iPad Performance & Global Residents</p>
+        <p>MARBELLA 2026 | THE 2026 LIFESTYLE REPORT</p>
+        <p style="margin-top: 1rem; color: var(--accent);">DESIGNED BY WEB DSIGN VANGUARD</p>
     </footer>
 
 </body>
