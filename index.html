@@ -3,198 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARBELLA 2026 | Report</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <title>MARBELLA 2026 | The Executive Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #050505; --text: #fff; --accent: #c5a059; --border: rgba(255,255,255,0.15); }
+        :root {
+            --bg: #050505;
+            --text: #ffffff;
+            --accent: #c5a059;
+            --border: rgba(255, 255, 255, 0.15);
+            --card-hover: rgba(197, 160, 89, 0.08);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        
-        header { height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-bottom: 1px solid var(--border); }
-        h1 { font-family: 'Bodoni Moda', serif; font-size: clamp(2.5rem, 8vw, 5rem); text-transform: uppercase; letter-spacing: -2px; }
-        .tagline { color: var(--accent); text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; margin-bottom: 1rem; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-        section { margin-top: 5rem; }
-        h2 { font-family: 'Bodoni Moda', serif; font-size: 2rem; text-transform: uppercase; margin-bottom: 2rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 1.5rem; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        /* --- Header Vanguardista --- */
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            background: radial-gradient(circle at center, #111 0%, #050505 100%);
+        }
 
-        /* EL FIX CRÍTICO: El <a> envuelve TODA la tarjeta */
-        .card-link { text-decoration: none; color: inherit; display: block; }
-        
-        .card { 
-            background: rgba(255,255,255,0.03); 
-            border: 1px solid var(--border); 
-            padding: 2rem; 
+        header h1 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: clamp(2.5rem, 10vw, 6rem);
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            line-height: 0.9;
+        }
+
+        .tagline {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-size: 0.7rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* --- Secciones --- */
+        section { margin-top: 8rem; }
+
+        h2 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h2 span { font-size: 0.9rem; font-family: 'Inter'; opacity: 0.5; letter-spacing: 2px; }
+
+        h3.sub-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin: 2rem 0 1.5rem;
+            letter-spacing: 3px;
+        }
+
+        /* --- Grid de Conectividad --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.2rem;
+        }
+
+        /* El enlace envuelve toda la tarjeta para máxima usabilidad en iPad */
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
             height: 100%;
-            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             position: relative;
         }
 
-        .card:hover { border-color: var(--accent); background: rgba(197,160,89,0.1); transform: translateY(-5px); }
-        
-        .card h3 { font-family: 'Bodoni Moda', serif; font-size: 1.4rem; margin-bottom: 0.8rem; }
-        .card p { font-size: 0.85rem; color: #ccc; margin-bottom: 1.5rem; font-weight: 300; }
-        .card .btn-sim { font-size: 0.65rem; text-transform: uppercase; color: var(--accent); font-weight: 700; letter-spacing: 2px; }
+        .card-link:hover .card {
+            border-color: var(--accent);
+            background: var(--card-hover);
+        }
 
-        footer { padding: 5rem 0; text-align: center; opacity: 0.4; font-size: 0.7rem; border-top: 1px solid var(--border); margin-top: 5rem; }
+        .card-link:hover {
+            transform: translateY(-8px);
+        }
 
-        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .card h4 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: #aaa;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .status-tag {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            letter-spacing: 2px;
+            font-weight: 700;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 6rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            margin-top: 10rem;
+            opacity: 0.4;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            header { height: 50vh; }
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <p class="tagline">Lifestyle & Wellness</p>
-    <h1>MARBELLA 2026</h1>
+    <p class="tagline">The 2026 Lifestyle & Wellness Report</p>
+    <h1>MARBELLA<br>DIRECTORY</h1>
 </header>
 
 <div class="container">
 
     <section>
-        <h2>01. Education</h2>
+        <h2>01. Academic Excellence <span>Global Hub</span></h2>
         <div class="grid">
-            <a href="https://www.instagram.com/alohacollege/" target="_blank" rel="noopener noreferrer" class="card-link">
+            <a href="https://www.instagram.com/alohacollege/" target="_blank" class="card-link">
                 <div class="card">
-                    <h3>Aloha College</h3>
-                    <p>British style and IB pioneer. Global community in Nueva Andalucía.</p>
-                    <span class="btn-sim">OPEN INSTAGRAM →</span>
+                    <h4>Aloha College</h4>
+                    <p>British Curriculum (3-18) and IB pioneers in Nueva Andalucía. Global community.</p>
+                    <span class="status-tag">Open Instagram →</span>
                 </div>
             </a>
-            <a href="https://www.instagram.com/swansinternationalschool/" target="_blank" rel="noopener noreferrer" class="card-link">
+            <a href="https://www.instagram.com/swans_international_school/" target="_blank" class="card-link">
                 <div class="card">
-                    <h3>Swans International</h3>
-                    <p>Elite academic standards with 50 years of heritage in Sierra Blanca.</p>
-                    <span class="btn-sim">OPEN INSTAGRAM →</span>
+                    <h4>Swans International</h4>
+                    <p>Elite academic standards with a 50-year heritage in Sierra Blanca.</p>
+                    <span class="status-tag">Open Instagram →</span>
                 </div>
             </a>
-            <a href="https://www.instagram.com/bismarbella/" target="_blank" rel="noopener noreferrer" class="card-link">
+            <a href="https://www.instagram.com/bismarbella/" target="_blank" class="card-link">
                 <div class="card">
-                    <h3>British International</h3>
-                    <p>Modern facilities and personalized early years development.</p>
-                    <span class="btn-sim">OPEN INSTAGRAM →</span>
+                    <h4>BIS Marbella</h4>
+                    <p>Modern facilities and personalized early years development in the Golden Mile.</p>
+                    <span class="status-tag">Open Instagram →</span>
                 </div>
             </a>
-            <a href="https://www.instagram.com/laudesanpedro/" target="_blank" rel="noopener noreferrer" class="card-link">
+            <a href="https://www.instagram.com/laudesanpedro/" target="_blank" class="card-link">
                 <div class="card">
-                    <h3>Laude San Pedro</h3>
-                    <p>British/Spanish dual curriculum for cultural immersion.</p>
-                    <span class="btn-sim">OPEN INSTAGRAM →</span>
+                    <h4>Laude San Pedro</h4>
+                    <p>British/Spanish dual curriculum for total cultural immersion.</p>
+                    <span class="status-tag">Open Instagram →</span>
                 </div>
             </a>
-            <a href="https://www.instagram.com/dsmalaga/" target="_blank" rel="noopener noreferrer" class="card-link">
+            <a href="https://www.instagram.com/dsmalaga/" target="_blank" class="card-link">
                 <div class="card">
-                    <h3>German School</h3>
-                    <p>Academic rigor in a UNESCO-protected environment.</p>
-                    <span class="btn-sim">OPEN INSTAGRAM →</span>
+                    <h4>German School</h4>
+                    <p>Academic rigor in a UNESCO-protected environment (La Mairena).</p>
+                    <span class="status-tag">Open Instagram →</span>
                 </div>
             </a>
         </div>
     </section>
 
     <section>
-        <h2>02. Wellness Axis</h2>
+        <h2>02. Wellness & Health <span>Longevity</span></h2>
         <div class="grid">
-            <a href="https://www.instagram.com/sixsensesspamarbella/" target="_blank" rel="noopener noreferrer" class="card-link">
+            <a href="https://www.instagram.com/sixsensesspamarbella/" target="_blank" class="card-link">
                 <div class="card">
-                    <h3>Six Senses Spa</h3>
-                    <p>Holistic healing at Puente Romano. Bio-hacking hub.</p>
-                    <span class="btn-sim">VIEW →</span>
+                    <h4>Six Senses Spa</h4>
+                    <p>Holistic healing and organic design at Puente Romano.</p>
+                    <span class="status-tag">Explore →</span>
                 </div>
             </a>
-            <a href="https://www.instagram.com/marbellaclubh/" target="_blank" rel="noopener noreferrer" class="card-link">
+            <a href="https://www.instagram.com/buchingerwilhelmi/" target="_blank" class="card-link">
                 <div class="card">
-                    <h3>Marbella Club Thalasso</h3>
-                    <p>Seawater regeneration and luxury detox programs.</p>
-                    <span class="btn-sim">VIEW →</span>
+                    <h4>Buchinger Wilhelmi</h4>
+                    <p>World-leading therapeutic fasting and integrative medicine clinic.</p>
+                    <span class="status-tag">Explore →</span>
                 </div>
             </a>
-            <a href="https://www.instagram.com/buchingerwilhelmi/" target="_blank" rel="noopener noreferrer" class="card-link">
+            <a href="https://www.instagram.com/quironsalud/" target="_blank" class="card-link">
                 <div class="card">
-                    <h3>Buchinger Wilhelmi</h3>
-                    <p>World-leading therapeutic fasting clinic.</p>
-                    <span class="btn-sim">VIEW →</span>
+                    <h4>Quirónsalud</h4>
+                    <p>24/7 Bilingual private hospital in Marbella city center.</p>
+                    <span class="status-tag">Explore →</span>
                 </div>
             </a>
-            <a href="https://www.instagram.com/shantisom/" target="_blank" rel="noopener noreferrer" class="card-link">
+            <a href="https://www.instagram.com/hcmarbella/" target="_blank" class="card-link">
                 <div class="card">
-                    <h3>Shanti Som</h3>
-                    <p>Luxury yoga and meditation retreats in the hills.</p>
-                    <span class="btn-sim">VIEW →</span>
+                    <h4>HC International</h4>
+                    <p>Boutique hospital famous for regenerative medicine and oncology.</p>
+                    <span class="status-tag">Explore →</span>
+                </div>
+            </a>
+            <a href="https://www.instagram.com/helicopteros_sanitarios/" target="_blank" class="card-link">
+                <div class="card">
+                    <h4>Helicópteros Sanitarios</h4>
+                    <p>Exclusive emergency home service and critical air transfers.</p>
+                    <span class="status-tag">Explore →</span>
                 </div>
             </a>
         </div>
     </section>
 
     <section>
-        <h2>03. Sports Elite</h2>
+        <h2>03. Sports Elite <span>Performance</span></h2>
+        <h3 class="sub-label">Tennis & Padel</h3>
         <div class="grid">
-            <a href="https://www.instagram.com/puenteromanotennisclub/" target="_blank" rel="noopener noreferrer" class="card-link">
-                <div class="card">
-                    <h3>Puente Romano Tennis</h3>
-                    <p>Training base for Novak Djokovic.</p>
-                    <span class="btn-sim">LINK →</span>
-                </div>
+            <a href="https://www.instagram.com/puenteromanotennisclub/" target="_blank" class="card-link">
+                <div class="card"><h4>Puente Romano Tennis</h4><p>Base for Novak Djokovic. Social heart of tennis.</p><span class="status-tag">Link</span></div>
             </a>
-            <a href="https://www.instagram.com/nuevaalcantaraclub/" target="_blank" rel="noopener noreferrer" class="card-link">
-                <div class="card">
-                    <h3>Nueva Alcántara (NAC)</h3>
-                    <p>Gold standard for Padel and networking.</p>
-                    <span class="btn-sim">LINK →</span>
-                </div>
+            <a href="https://www.instagram.com/nuevaalcantaraclub/" target="_blank" class="card-link">
+                <div class="card"><h4>NAC Padel</h4><p>2026 gold standard for Padel and networking.</p><span class="status-tag">Link</span></div>
             </a>
-            <a href="https://www.instagram.com/rcglasbrisas/" target="_blank" rel="noopener noreferrer" class="card-link">
-                <div class="card"><h3>RCG Las Brisas</h3><p>Elite Golf in Nueva Andalucía.</p><span class="btn-sim">LINK</span></div>
+            <a href="https://www.instagram.com/realclubdepadelmarbella/" target="_blank" class="card-link">
+                <div class="card"><h4>Real Padel Marbella</h4><p>Cosmopolitan hub for active residents.</p><span class="status-tag">Link</span></div>
+            </a>
+        </div>
+        <h3 class="sub-label">The Golf Valley</h3>
+        <div class="grid">
+            <a href="https://www.instagram.com/rcglasbrisas/" target="_blank" class="card-link">
+                <div class="card"><h4>RCG Las Brisas</h4><p>Private professional club in Nueva Andalucía.</p><span class="status-tag">Link</span></div>
+            </a>
+            <a href="https://www.instagram.com/losnaranjosgolf/" target="_blank" class="card-link">
+                <div class="card"><h4>Los Naranjos</h4><p>Professional course with high-end social life.</p><span class="status-tag">Link</span></div>
             </a>
         </div>
     </section>
 
     <section>
-        <h2>05. Gastronomy</h2>
+        <h2>05. Gastronomy <span>Michelin Stars</span></h2>
         <div class="grid">
-            <a href="https://www.instagram.com/restaurantskina/" target="_blank" rel="noopener noreferrer" class="card-link">
-                <div class="card"><h3>Skina (2*)</h3><p>Michelin excellence in Old Town.</p><span class="btn-sim">LINK</span></div>
+            <a href="https://www.instagram.com/restaurantskina/" target="_blank" class="card-link">
+                <div class="card"><h4>Skina (2*)</h4><p>Contemporary Andalusian art in the Old Town.</p><span class="status-tag">View Menu</span></div>
             </a>
-            <a href="https://www.instagram.com/lenadanigarcia/" target="_blank" rel="noopener noreferrer" class="card-link">
-                <div class="card"><h3>Leña</h3><p>Dani García's fire concept.</p><span class="btn-sim">LINK</span></div>
+            <a href="https://www.instagram.com/back_marbella/" target="_blank" class="card-link">
+                <div class="card"><h4>Back (1*)</h4><p>Modern culinary excellence by David Olivas.</p><span class="status-tag">View Menu</span></div>
             </a>
-            <a href="https://www.instagram.com/nobumarbella/" target="_blank" rel="noopener noreferrer" class="card-link">
-                <div class="card"><h3>Nobu Marbella</h3><p>Golden Mile lifestyle epicenter.</p><span class="btn-sim">LINK</span></div>
+            <a href="https://www.instagram.com/lenadanigarcia/" target="_blank" class="card-link">
+                <div class="card"><h4>Leña</h4><p>Dani García's fire-focused steakhouse concept.</p><span class="status-tag">View Menu</span></div>
             </a>
-            <a href="https://www.instagram.com/notablumarbella/" target="_blank" rel="noopener noreferrer" class="card-link">
-                <div class="card"><h3>Nota Blu</h3><p>Sophisticated modern brasserie.</p><span class="btn-sim">LINK</span></div>
+            <a href="https://www.instagram.com/notablumarbella/" target="_blank" class="card-link">
+                <div class="card"><h4>Nota Blu</h4><p>Sophisticated modern brasserie architecture.</p><span class="status-tag">View Menu</span></div>
+            </a>
+            <a href="https://www.instagram.com/lacabanemarbella/" target="_blank" class="card-link">
+                <div class="card"><h4>La Cabane</h4><p>Beach Club redesigned by Dolce & Gabbana.</p><span class="status-tag">View Menu</span></div>
             </a>
         </div>
     </section>
 
-    <section>
-        <h2>07. Healthcare</h2>
+    <section style="background: #111; padding: 4rem 2rem; border: 1px solid var(--accent); margin-top: 10rem;">
+        <h2 style="border:none">11. The Legacy <span>Icons</span></h2>
         <div class="grid">
-            <a href="https://www.instagram.com/quironsalud/" target="_blank" rel="noopener noreferrer" class="card-link">
-                <div class="card"><h3>Quirónsalud</h3><p>24/7 Bilingual Hospital center.</p><span class="btn-sim">LINK</span></div>
+            <a href="https://www.instagram.com/antoniobanderas/" target="_blank" class="card-link">
+                <div class="card" style="background:#000"><h4>Antonio Banderas</h4><p>Starlite Ambassador.</p></div>
             </a>
-            <a href="https://www.instagram.com/hcmarbella/" target="_blank" rel="noopener noreferrer" class="card-link">
-                <div class="card"><h3>HC Marbella</h3><p>Regenerative medicine boutique.</p><span class="btn-sim">LINK</span></div>
+            <a href="https://www.instagram.com/djokernole/" target="_blank" class="card-link">
+                <div class="card" style="background:#000"><h4>Novak Djokovic</h4><p>Tennis Legend Resident.</p></div>
             </a>
-            <a href="https://www.instagram.com/helicoptersanitarios/" target="_blank" rel="noopener noreferrer" class="card-link">
-                <div class="card"><h3>Helicópteros Sanitarios</h3><p>Emergency luxury medical care.</p><span class="btn-sim">LINK</span></div>
+            <a href="https://www.instagram.com/starliteoccident/" target="_blank" class="card-link">
+                <div class="card" style="background:#000"><h4>Starlite Occident</h4><p>Europe's premier festival.</p></div>
             </a>
-        </div>
-    </section>
-
-    <section>
-        <h2>11. Icons & Legacy</h2>
-        <div class="grid">
-            <a href="https://www.instagram.com/antoniobanderas/" target="_blank" rel="noopener noreferrer" class="card-link">
-                <div class="card"><h3>Antonio Banderas</h3><p>Starlite & Global Ambassador.</p></div>
-            </a>
-            <a href="https://www.instagram.com/djokernole/" target="_blank" rel="noopener noreferrer" class="card-link">
-                <div class="card"><h3>Novak Djokovic</h3><p>World #1 Resident.</p></div>
-            </a>
-            <a href="https://www.instagram.com/starliteoccident/" target="_blank" rel="noopener noreferrer" class="card-link">
-                <div class="card"><h3>Starlite Occident</h3><p>Premier Boutique Festival.</p></div>
+            <a href="https://www.instagram.com/puertobanusosofficial/" target="_blank" class="card-link">
+                <div class="card" style="background:#000"><h4>Puerto Banús</h4><p>Retail & Yachting Hub.</p></div>
             </a>
         </div>
     </section>
@@ -202,7 +313,7 @@
 </div>
 
 <footer>
-    <p>MARBELLA 2026 | THE REPORT</p>
+    <p>MARBELLA 2026 | THE VERIFIED REPORT</p>
 </footer>
 
 </body>
